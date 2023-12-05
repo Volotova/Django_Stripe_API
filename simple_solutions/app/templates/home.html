@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+
+{% for item in items %}
+<div class="wrapper">
+    <div class="product-img">
+      <img src="https://i.etsystatic.com/isla/111a04/48288212/isla_fullxfull.48288212_iqohegs5.jpg" height="420" width="327">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1>{{ item.name }}</h1>
+        <p>{{ item.description|truncatewords:3 }}</p>
+        <div class="product-price-btn">
+            <button type="button"><a href="{% url 'item' item.pk %}">info</a></button>
+        </div>
+      </div>
+    </div>
+</div>
+{% endfor %}
+
+</body>
+</html>
